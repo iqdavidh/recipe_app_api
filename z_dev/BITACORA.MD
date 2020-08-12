@@ -12,4 +12,11 @@ https://hub.docker.com
 
 
 Vemos que la distribución es con Alpne
+docker-compose run app sh -c "python --version"
 docker-compose run app sh -c "cat /etc/os-release"
+
+
+###Usar
+correr un test
+docker-compose run app sh -c "python manage.py test"
+
