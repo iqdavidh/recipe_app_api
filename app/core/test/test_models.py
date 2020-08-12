@@ -17,7 +17,8 @@ class ModelTests(TestCase):
         self.assertTrue(user.check_password(password))
 
     def test_create_user_email_normalize(self):
-        """Los correos se gaurdan con el dominio normalizado - pero el usaurio no se toca"""
+        """Los correos se gaurdan con el dominio normalizado - \
+        pero el usaurio no se toca"""
         email = "dummy@Test.com"
 
         user = get_user_model().objects.create_user(
@@ -34,3 +35,23 @@ class ModelTests(TestCase):
         )
 
         self.assertEqual(user2.email, email2)
+
+    def test_validar_email(self):
+        """Lanzar error si no exite el email"""
+        with self.assertRaises(ValueError):
+            get_user_model().objects.create_user(
+                None,
+                'no se ocupa en el test'
+            )
+
+    def test_create_superuser(self):
+        """Los correos se gaurdan con el dominio normalizado - \
+        pero el usaurio no se toca"""
+
+        user = get_user_model().objects.create_superuser(
+            email='test@test.com',
+            password='no se ocupa en el test'
+        )
+
+        self.assertTrue(user.is_superuser)
+        self.assertTrue(user.is_staff)
