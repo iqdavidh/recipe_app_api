@@ -17,6 +17,11 @@ docker-compose run app sh -c "cat /etc/os-release"
 
 
 ###Usar
-correr un test
+
+####para reconstruir el contenedos con los cambios en DockerFiled y docker-compose
+
+docker-compose build
+
+####correr un test
 docker-compose run app sh -c "python manage.py test"
 
