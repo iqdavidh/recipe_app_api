@@ -8,6 +8,8 @@ from core import models
 class UserAdmin(BaseUserAdmin):
     ordering = ['id']
     list_display = ['email', 'name']
+
+    # Secciones de la pagina de usauario
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
         (_('Personal Info'), {'fields': ('name',)}),
@@ -22,6 +24,13 @@ class UserAdmin(BaseUserAdmin):
             }
         ),
         (_('Important dates'), {'fields': ('last_login',)}),
+    )
+    # campos para la pagina de add user
+    add_fieldsets = (
+        (None, {
+            'classes': ('wide',),
+            'fields': ('email', 'password1', 'password2')
+        }),
     )
 
 
