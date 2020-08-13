@@ -22,9 +22,12 @@ docker-compose run app sh -c "cat /etc/os-release"
 
 docker-compose build
 
-####correr un test
+####correr test
 docker-compose run app sh -c "python manage.py test"
 
-
+####correr test con flake8
 docker-compose run --rm app sh -c "python manage.py test && flake8"
+
+
+docker-compose run --rm app sh -c "python manage.py createsuperuser"
 
